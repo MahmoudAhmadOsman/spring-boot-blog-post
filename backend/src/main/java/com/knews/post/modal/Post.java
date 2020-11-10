@@ -1,11 +1,13 @@
 package com.knews.post.modal;
 
+import javax.persistence.Entity;
 import com.sun.istack.NotNull;
-
-import javax.persistence.*;
-
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Table;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Date;
-
 
 @Entity
 @Table(name="posts")
@@ -24,7 +26,7 @@ public class Post {
     private String postImage;
     @Column(name = "post_content")
     private String content;
-    @Column(name = "create_at")
+    @Column(name = "created_at")
     private Date createdAt;
     @Column(name = "updated_at")
     private Date updatedAt;
