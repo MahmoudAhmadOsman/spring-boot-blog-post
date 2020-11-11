@@ -1,9 +1,6 @@
-package com.knews.post.modal;
-
-
+package com.knews.post.model;
 
 import com.sun.istack.NotNull;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,10 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 
+
 @Entity
 @Table(name="posts")
 public class Post {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -48,7 +45,6 @@ public class Post {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
-
 
     public Long getId() {
         return id;
