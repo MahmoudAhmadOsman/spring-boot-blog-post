@@ -1,12 +1,15 @@
 package com.knews.post.modal;
 
-import javax.persistence.Entity;
+
+
 import com.sun.istack.NotNull;
+
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.Table;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
@@ -20,10 +23,13 @@ public class Post {
     @NotNull
     @Column(name = "title")
     private String title;
+    @NotNull
     @Column(name = "author")
     private String author;
+    @NotNull
     @Column(name = "post_image")
     private String postImage;
+    @NotNull
     @Column(name = "post_content")
     private String content;
     @Column(name = "created_at")
