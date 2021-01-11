@@ -1,14 +1,9 @@
 package com.knews.post.model;
 
 import com.sun.istack.NotNull;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.util.Date;
 
+import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name="posts")
@@ -33,6 +28,18 @@ public class Post {
     private Date createdAt;
     @Column(name = "updated_at")
     private Date updatedAt;
+
+
+
+
+    //Relationship
+//    @OneToMany(mappedBy = "book", fetch = FetchType.LAZY,
+//            cascade = CascadeType.ALL)
+//    private Set<Comment> comments;
+
+
+
+
 
     public Post() {
     }

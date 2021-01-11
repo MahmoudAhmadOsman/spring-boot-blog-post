@@ -2,9 +2,40 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h1 class="text-danger">Lastest News</h1>
+        <h1 class="text-danger">{{title}}</h1>
         <hr />
       </div>
     </div>
+
+    <!-- Start of Post lists-->
+
+    <div class="post__list">
+      <div class="row" *ngFor="let post of posts let i =index">
+        <div class="col-md-6 mt-3">
+          <a href="/{{post.id}}">
+            <img
+              src="{{post.postImage}}"
+              alt="{{post.title}}"
+              style="max-width: 513px;"
+          /></a>
+        </div>
+        <div class="col-md-6">
+          <a href="/{{post.id}}"> <h3>{{post.title}}</h3></a>
+          <hr />
+          <p>{{post.content}}</p>
+          <hr />
+          <p>
+            <small class="text-muted"
+              ><i class="fa fa-user-circle" title="{{post.author}}"></i>
+              &nbsp;{{post.author}}&nbsp; </small
+            ><span class="pull-right text-muted"
+              >{{post.createdAt | date}}</span
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- End of Post lists-->
   </div>
 </section>
