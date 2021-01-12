@@ -6,7 +6,6 @@ import com.knews.post.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.HashMap;
 import java.util.List;
@@ -37,18 +36,33 @@ public class PostController {
     @GetMapping("/posts/{id}")
     public ResponseEntity<Post> getPostById(@PathVariable Long id){
         Post post = postRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("A post with this id does not exist:" + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Post with this id does not exist: " + id));
         return  ResponseEntity.ok(post);
     }
 
     //@EDIT OR UPDATE METHOD
+    @PutMapping("/books/{id}")
+    public ResponseEntity<Post> updateBook(@PathVariable Long id, @RequestBody Post postDetails){
+
+        Post post = postRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Post with this id does not exist: " + id));
+
+        post.setTitle(postDetails.getTitle());
+        post.setAuthor(postDetails.getTitle());
+        post.setPostImage(postDetails.getPostImage());
+        post.setContent(postDetails.getContent());
+        post.setCreatedAt(postDetails.getCreatedAt());
+        post.setUpdatedAt(postDetails.getUpdatedAt());
+        Post updatedPost = postRepository.save(post);
+        return ResponseEntity.ok(updatedPost);
+    }
 
 
     //@DELETE METHOD
     @DeleteMapping("/posts/{id}")
     public ResponseEntity<Map<String, Boolean>> deletePost(@PathVariable Long id){
         Post post = postRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Posts with this id does not exist :" + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Posts with this id does not exist: " + id));
 
         postRepository.delete(post);
         Map<String, Boolean> response = new HashMap<>();
@@ -60,25 +74,4 @@ public class PostController {
     
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

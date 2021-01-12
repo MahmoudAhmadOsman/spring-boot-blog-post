@@ -13,6 +13,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
 import { PostDetailsComponent } from './components/post-details/post-details.component';
 import { HomeComponent } from './components/home/home.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { CreateNewPostComponent } from './components/create-new-post/create-new-post.component';
  
 
 @NgModule({
@@ -24,6 +26,8 @@ import { HomeComponent } from './components/home/home.component';
     AddPostComponent,
     PostDetailsComponent,
     HomeComponent,
+    ContactComponent,
+    CreateNewPostComponent,
    
   ],
   imports: [
