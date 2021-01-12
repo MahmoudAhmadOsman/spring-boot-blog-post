@@ -21,4 +21,11 @@ export class PostService {
   }
 
 
+
+  //Add new Post
+  createNewPost(post: Post): Observable<any> {
+    return this.httpClient.post(`${this.baseURL}`, post);
+  
+}
+
 }

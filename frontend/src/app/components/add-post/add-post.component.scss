@@ -1,0 +1,26 @@
+.add_post_container {
+    position: relative;
+    margin-top: 0px;
+
+    .modal {
+        position: relative;
+
+        .close {
+            opacity: 1;
+        }
+
+        .add_new_post {
+            position: relative;
+
+            form {
+                position: relative;
+
+                label {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+
+}
