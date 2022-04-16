@@ -1,6 +1,6 @@
-package com.knews.post.repository;
+package com.knews.repository;
 
-import com.knews.post.model.Post;
+import com.knews.beans.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package com.knews.post;
+package com.knews;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
