@@ -24,10 +24,8 @@ public class PostController {
         try{
             List<Post> courses = postService.getPostList();
             return new ResponseEntity<List<Post>>(courses, HttpStatus.OK);
-        }catch (Exception e){
-            throw  new ResponseStatusException(
-                    HttpStatus.BAD_REQUEST
-            );
+        } catch (Exception e){
+            throw  new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
 
     }
