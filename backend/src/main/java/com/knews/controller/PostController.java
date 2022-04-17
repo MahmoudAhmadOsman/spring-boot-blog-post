@@ -1,37 +1,58 @@
 package com.knews.controller;
-
 import com.knews.beans.Post;
-import com.knews.exception.BusinessException;
-import com.knews.repository.PostRepository;
+import com.knews.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/v1/")
 public class PostController {
     @Autowired
-    private PostRepository postRepository;
+    private PostService postService;
 
 
     //@GET ALL POSTS METHOD
+//    @GetMapping(value = "/posts")
+//    public List<Post> getAllPosts(){
+//        return postService.getAllPosts();
+//    }
+
+//    @GetMapping(value = "/posts")
+//    public ResponseEntity<List<Post>> getPostList(){
+//        List<Post> posts = postService.getAllPosts();
+//        return new ResponseEntity<List<Post>>(posts, HttpStatus.OK);
+//    }
+
     @GetMapping(value = "/posts")
-    public List<Post> getAllPosts(){
-        return postRepository.findAll();
+    public ResponseEntity<List<Post>> coursesList(){
+        try{
+            List<Post> courses = postService.getPostList();
+            return new ResponseEntity<List<Post>>(courses, HttpStatus.OK);
+        }catch (Exception e){
+            throw  new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST
+            );
+        }
+
     }
+
+
+
 
 
     //@CREATE METHOD OR POST METHOD
-    @PostMapping("/posts")
-    public Post createPost(@RequestBody Post post) {
-        return postRepository.save(post);
-
-    }
+//    @PostMapping("/posts/add")
+//    public Post createPost(@RequestBody Post post) {
+//        return postRepository.save(post);
+//
+//    }
     //@GET BY IF METHOD
 //    @GetMapping("/posts/{id}")
 //    public ResponseEntity<Post> getPostById(@PathVariable Long id){

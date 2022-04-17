@@ -6,6 +6,9 @@ import com.knews.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.Mapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -17,7 +20,7 @@ public class PostService {
 
 
     //Get all post
-    public List<Post> getAllPosts(){
+    public List<Post> getPostList(){
         try{
             return postRepository.findAll();
         }catch (IllegalArgumentException e) {
@@ -29,7 +32,22 @@ public class PostService {
     }
 
 
+//    public List<Post> getPostList() {
+//        try {
+//            return postRepository.findAll();
+//        }catch (Exception e){
+//            throw new ResponseStatusException(
+//                    HttpStatus.BAD_REQUEST, "No posts found!", e
+//            );
+//            //throw new BusinessException("601","Something went wrong in service layer" + e.getMessage());
+//        }
+//    }
+
+
+
+
 //Add new post
+
     public Post addPost(Post post){
         try{
             return postRepository.save(post);

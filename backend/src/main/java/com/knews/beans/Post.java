@@ -22,22 +22,13 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-
     private String title;
-    @NotNull
-
     private String author;
-    @NotNull
-
     private String postImage;
-    @NotNull
     @Lob
     private String postContent;
-
     @CreationTimestamp
     private Date createdAt;
-
     @UpdateTimestamp
     private Date updatedAt;
 
