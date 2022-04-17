@@ -46,14 +46,14 @@ public class PostService {
 
 
     //Get post by id
-    public Post findPostById(Long id){
+    public Post getPostById(Long id){
         try{
             return postRepository.findById(id).get();
         }catch (IllegalArgumentException e) {
-            throw new BusinessException("603", "Can't find post with this id!" + e.getMessage());
+            throw new BusinessException("605", "Can't find post with this id!" + e.getMessage());
         }
         catch (Exception e){
-            throw  new BusinessException("604", "Something went wrong in service layer" + e.getMessage());
+            throw  new BusinessException("606", "Something went wrong in service layer" + e.getMessage());
         }
     }
 
@@ -63,11 +63,11 @@ public class PostService {
         try {
             //if (postRepository.findById(id).isPresent()){
                 return postRepository.findById(id).get();
-           // }
+            //}
         }catch (IllegalArgumentException e){
-            throw new BusinessException("605", "Can't update this post!" + e.getMessage());
+            throw new BusinessException("607", "Can't update this post!" + e.getMessage());
         }catch (Exception e){
-            throw  new BusinessException("606", "Something went wrong in service layer" + e.getMessage());
+            throw  new BusinessException("608", "Something went wrong in service layer" + e.getMessage());
         }
     }
 
@@ -78,9 +78,9 @@ public class PostService {
         try{
              postRepository.deleteById(id);
         }catch (IllegalArgumentException e) {
-            throw new BusinessException("607", "Can't delete this post!" + e.getMessage());
+            throw new BusinessException("609", "Can't delete this post!" + e.getMessage());
         }catch (Exception e){
-            throw  new BusinessException("608", "Something went wrong in service layer" + e.getMessage());
+            throw  new BusinessException("610", "Something went wrong in service layer" + e.getMessage());
         }
 
     }

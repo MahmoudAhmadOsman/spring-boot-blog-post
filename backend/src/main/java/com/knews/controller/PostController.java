@@ -1,5 +1,7 @@
 package com.knews.controller;
 import com.knews.beans.Post;
+import com.knews.exception.BusinessException;
+import com.knews.exception.ControllerException;
 import com.knews.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Map;
 
 
 @CrossOrigin(origins = "*")
@@ -18,7 +21,7 @@ public class PostController {
     private PostService postService;
 
 
-    //@GET ALL POSTS METHOD
+    //@ get list of post
     @GetMapping(value = "/posts")
     public ResponseEntity<List<Post>> coursesList(){
         try{
@@ -31,35 +34,79 @@ public class PostController {
     }
 
 
+    //@ add new post
+    @PostMapping(value = "/posts/add")
+    public ResponseEntity<?> createPost(@RequestBody Post post) {
+        try {
+            Post savePost = postService.addPost(post);
+            return  new ResponseEntity<Post>(savePost, HttpStatus.CREATED);
+            //return new ResponseEntity<>("Post has been deleted!", HttpStatus.ACCEPTED);
+        }catch (BusinessException e){
+            ControllerException ce = new ControllerException(e.getErrorCode(), e.getErrorMessage());
+            return new ResponseEntity<ControllerException>(ce, HttpStatus.BAD_REQUEST);
+        }catch (Exception e){
+            ControllerException ce = new ControllerException("611", "Something went wrong in the controller !");
+            return new ResponseEntity<ControllerException>(ce, HttpStatus.BAD_REQUEST);
+        }
+
+
+    }
+
+
+    //@get Post by id
+    @GetMapping(value = "/posts/{id}")
+    public ResponseEntity<?> getPostById(@PathVariable("id") Long id){
+        try{
+            Post post = postService.getPostById(id);
+            return new ResponseEntity<Post>(post, HttpStatus.OK);
+        }catch (BusinessException e){
+            ControllerException ce = new ControllerException(e.getErrorCode(), e.getErrorMessage());
+            return new ResponseEntity<ControllerException>(ce, HttpStatus.BAD_REQUEST);
+
+        }catch (Exception e){
+            ControllerException ce = new ControllerException("612", "Something went wrong in the controller!");
+            return new ResponseEntity<ControllerException>(ce, HttpStatus.BAD_REQUEST);
+        }
+    }
 
 
 
-    //@CREATE METHOD OR POST METHOD
-//    @PostMapping("/posts/add")
-//    public Post createPost(@RequestBody Post post) {
-//        return postRepository.save(post);
-//
-//    }
-    //@GET BY IF METHOD
-//    @GetMapping("/posts/{id}")
-//    public ResponseEntity<Post> getPostById(@PathVariable Long id){
-//        Post post = postRepository.findById(id);
-//
-//        return  ResponseEntity.ok(post);
-//    }
+    //@ update post
+    @PutMapping(value = "/posts/{id}")
+    public ResponseEntity<?> updatePost(@PathVariable Long id, @RequestBody Post post) {
+        try {
+//            Post updatedPost = postService.updatePost(id);
+            Post updatedPost = postService.updatePost(id);
+            return new ResponseEntity<Post>(updatedPost, HttpStatus.OK);
+        }catch (BusinessException e){
+            ControllerException ce = new ControllerException(e.getErrorCode(), e.getErrorMessage());
+            return new ResponseEntity<ControllerException>(ce, HttpStatus.BAD_REQUEST);
+
+        }catch (Exception e){
+            ControllerException ce = new ControllerException("613", "Something went wrong in the controller!");
+            return new ResponseEntity<ControllerException>(ce, HttpStatus.BAD_REQUEST);
+        }
+
+    }
 
 
-    //@DELETE METHOD
-//    @DeleteMapping("/posts/{id}")
-//    public ResponseEntity<Map<String, Boolean>> deletePost(@PathVariable Long id){
-//        Post post = postRepository.findById(id)
-//                .orElseThrow(() -> new BusinessException("Posts with this id does not exist: " + id));
-//
-//        postRepository.delete(post);
-//        Map<String, Boolean> response = new HashMap<>();
-//        response.put("Post has been deleted", Boolean.TRUE);
-//        return ResponseEntity.ok(response);
-//    }
+
+    //@ delete post
+    @DeleteMapping("/posts/{id}")
+    public ResponseEntity<?> deletePost(@PathVariable Long id){
+        try{
+            postService.deletePost(id);
+            return new ResponseEntity<>("Post has been deleted!", HttpStatus.ACCEPTED);
+        }catch (BusinessException e){
+            ControllerException ce = new ControllerException(e.getErrorCode(), e.getErrorMessage());
+            return new ResponseEntity<ControllerException>(ce, HttpStatus.BAD_REQUEST);
+
+        }catch (Exception e){
+            ControllerException ce = new ControllerException("614", "Something went wrong in the controller!");
+            return new ResponseEntity<ControllerException>(ce, HttpStatus.BAD_REQUEST);
+        }
+
+    }
 
 
     
