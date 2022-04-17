@@ -19,17 +19,6 @@ public class PostController {
 
 
     //@GET ALL POSTS METHOD
-//    @GetMapping(value = "/posts")
-//    public List<Post> getAllPosts(){
-//        return postService.getAllPosts();
-//    }
-
-//    @GetMapping(value = "/posts")
-//    public ResponseEntity<List<Post>> getPostList(){
-//        List<Post> posts = postService.getAllPosts();
-//        return new ResponseEntity<List<Post>>(posts, HttpStatus.OK);
-//    }
-
     @GetMapping(value = "/posts")
     public ResponseEntity<List<Post>> coursesList(){
         try{
