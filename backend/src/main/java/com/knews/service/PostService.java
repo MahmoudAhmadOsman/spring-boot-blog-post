@@ -32,22 +32,7 @@ public class PostService {
     }
 
 
-//    public List<Post> getPostList() {
-//        try {
-//            return postRepository.findAll();
-//        }catch (Exception e){
-//            throw new ResponseStatusException(
-//                    HttpStatus.BAD_REQUEST, "No posts found!", e
-//            );
-//            //throw new BusinessException("601","Something went wrong in service layer" + e.getMessage());
-//        }
-//    }
-
-
-
-
 //Add new post
-
     public Post addPost(Post post){
         try{
             return postRepository.save(post);
