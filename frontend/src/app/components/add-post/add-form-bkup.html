@@ -107,15 +107,15 @@
                         class="form-control"
                         placeholder="Enter post content"
                         #content="ngModel"
-                        [(ngModel)]="post.content"
+                        [(ngModel)]="post.postContent"
                         name="content"
                         id="content"
                         required
                       ></textarea>
                       <span
                         class="text-danger"
-                        *ngIf="content.invalid && (content.dirty || content.touched)"
-                        >Post content is required!</span
+                        *ngIf="postContent.invalid && (content.dirty || postContent.touched)"
+                        >Post postContent is required!</span
                       >
                     </div>
 
@@ -128,20 +128,6 @@
                     </button>
                   </form>
                 </div>
-              </div>
-
-              <!-- Modal footer -->
-              <div class="modal-footer">
-                <!-- <p class="text-muted text-left">
-                  Add new post to the post list
-                </p> -->
-                <!-- <button
-                  type="button"
-                  class="btn btn-danger"
-                  data-dismiss="modal"
-                >
-                  Close
-                </button> -->
               </div>
             </div>
           </div>

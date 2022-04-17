@@ -1,6 +1,6 @@
 <section class="add_post_container">
   <div class="container">
-    <h1 class="text-info">{{creatTitle}}</h1>
+    <h1 class="text-info">{{ creatTitle }}</h1>
     <hr />
     <div class="row">
       <div class="col-md-12">
@@ -54,7 +54,9 @@
             />
             <span
               class="text-danger"
-              *ngIf="postImage.invalid && (postImage.dirty || postImage.touched)"
+              *ngIf="
+                postImage.invalid && (postImage.dirty || postImage.touched)
+              "
               >Post image is required!</span
             >
           </div>
@@ -71,7 +73,9 @@
             />
             <span
               class="text-danger"
-              *ngIf="createdAt.invalid && (createdAt.dirty || createdAt.touched)"
+              *ngIf="
+                createdAt.invalid && (createdAt.dirty || createdAt.touched)
+              "
               >Post published date is required!</span
             >
           </div>
@@ -85,15 +89,18 @@
               rows="10"
               class="form-control"
               placeholder="Enter post content"
-              #content="ngModel"
-              [(ngModel)]="post.content"
-              name="content"
-              id="content"
+              #postContent="ngModel"
+              [(ngModel)]="post.postContent"
+              name="postContent"
+              id="postContent"
               required
             ></textarea>
             <span
               class="text-danger"
-              *ngIf="content.invalid && (content.dirty || content.touched)"
+              *ngIf="
+                postContent.invalid &&
+                (postContent.dirty || postContent.touched)
+              "
               >Post content is required!</span
             >
           </div>

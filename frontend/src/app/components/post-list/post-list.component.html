@@ -6,21 +6,6 @@
         <hr />
       </div>
       <div class="col-md-6">
-        <!-- <a
-          class="fa fa-plus btn btn-info"
-          [routerLink]="['/add-post']"
-          data-toggle="modal"
-          data-target="#addPostModal"
-          title="Add New Post"
-        >
-        </a> -->
-        <!-- <a
-          class="fa fa-plus btn btn-info"
-          [routerLink]="['/add-post']"
-          title="Add New Post"
-        >
-        </a> -->
-
         <a href="/add-new-post" class="btn btn-info" title="Create New Post">
           <i class="fa fa-plus"></i>
         </a>
@@ -41,7 +26,7 @@
         <div class="col-md-6">
           <a href="/{{post.id}}"> <h3>{{post.title}}</h3></a>
           <hr />
-          <p>{{post.content}}</p>
+          <p>{{post.postContent}}</p>
           <hr />
           <p>
             <small class="text-muted"
