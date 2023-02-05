@@ -21,12 +21,12 @@ public class PostController {
     private PostService postService;
 
 
-    //@ get list of post
+    //@ get list of posts
     @GetMapping(value = "/posts")
     public ResponseEntity<List<Post>> coursesList(){
         try{
-            List<Post> courses = postService.getPostList();
-            return new ResponseEntity<List<Post>>(courses, HttpStatus.OK);
+            List<Post> posts = postService.getPostList();
+            return new ResponseEntity<List<Post>>(posts, HttpStatus.OK);
         } catch (Exception e){
             throw  new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
