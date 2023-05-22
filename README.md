@@ -46,4 +46,4 @@ Once the application is up and running, you can access it through your web brows
 
 This application is based on the Spring Boot framework and incorporates various open-source libraries and dependencies. Special thanks to the authors and contributors of these projects for their valuable work.
 
-If you have any questions or need further assistance, feel free to contact the repository owner, [Mahmoud Ahmad Osman](http://mahmoudosman.com).
+If you have any questions or need further assistance, feel free to contact the repository owner, [Mahmoud Osman](http://mahmoudosman.com).
